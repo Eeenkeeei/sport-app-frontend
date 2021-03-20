@@ -6,8 +6,8 @@ export interface User {
 
 export interface Workout {
     _id: number;
-    user_id: number;
-    type: "бег" | "велосипед" | "лыжи" | "ходьба";
+    user_id: string;
+    type: "run" | "bike" | "skiing" | "walking";
     date: string;
     length: number;
     comment: string;

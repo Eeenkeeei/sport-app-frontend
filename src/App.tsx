@@ -5,7 +5,7 @@ import {Store} from "./redux/rootReducer";
 import {Backdrop, CircularProgress} from '@material-ui/core';
 import {changeLoading} from "./redux/actions";
 import {LoginComponent} from "./components/LoginComponent";
-import {TablePage} from "./components/TablePage";
+import {AppPage} from "./components/AppPage";
 
 function App() {
     const dispatch = useDispatch()
@@ -14,7 +14,7 @@ function App() {
 
     return (
         <div>
-            {user ? <TablePage/> : <LoginComponent/>}
+            {user ? <AppPage/> : <LoginComponent/>}
             <Backdrop open={isLoading}><CircularProgress/></Backdrop>
         </div>
     );
