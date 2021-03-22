@@ -137,6 +137,10 @@ export const AppPage = () => {
                 </FormControl>
                 <div style={{maxWidth: '100%'}}>
                     <MaterialTable
+                        localization={{
+                            body: {emptyDataSourceMessage: "Нет записей"},
+                            toolbar: {searchPlaceholder: "Поиск"}
+                        }}
                         title={"Список тренировок"}
                         components={{Container: TableContainer}}
                         columns={columns}
