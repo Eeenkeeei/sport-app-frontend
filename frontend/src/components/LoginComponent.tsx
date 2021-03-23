@@ -16,17 +16,18 @@ const useStyles = makeStyles((theme: Theme) =>
             flexDirection: "column"
         },
         header: {
-            marginTop: 150
+            marginTop: 150,
+            fontSize: 40
         },
         input: {
             marginTop: 15,
-            width: 300
+            width: 310
         },
         buttonsContainer: {
             marginTop: 20,
             display: "flex",
             justifyContent: "space-around",
-            width: 300,
+            width: 310,
         }
     }),
 );
@@ -54,12 +55,12 @@ export const LoginComponent = (props: LoginComponent) => {
 
             {selectedAction === "login" ?
                 <>
-                    <Typography className={classes.header}>Войти в приложение</Typography>
+                    <Typography className={classes.header}>Best Runner</Typography>
                     <TextField value={login} onChange={(e) => setLogin(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Login"/>
                     <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Password"/>
-                    <Button style={{width: 300, marginTop: 15}} variant="contained" color="primary" onClick={() => {
+                    <Button style={{width: 310, marginTop: 15}} variant="contained" color="primary" onClick={() => {
                         handleLogin()
                     }}>
                         Войти
@@ -78,11 +79,9 @@ export const LoginComponent = (props: LoginComponent) => {
                                variant="outlined" margin="dense" label="Login"/>
                     <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Password"/>
-                    <div className={classes.buttonsContainer}>
-                        <Button style={{width: 300, marginTop: 15}} variant="contained" color="primary" onClick={handleRegistration}>
+                        <Button style={{width: 310, marginTop: 15}} variant="contained" color="primary" onClick={handleRegistration}>
                             Зарегистрироваться
                         </Button>
-                    </div>
                     <Typography style={{marginTop: 15}}><strong onClick={() => {
                         setSelectedAction("login");
                         setPassword("");

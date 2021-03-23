@@ -6,7 +6,7 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 const ObjectId = require('mongodb').ObjectId;
 
-const url = "mongodb+srv://romanDbUser:romanDbUser@cluster0.byt7s.mongodb.net";
+const url = "mongodb+srv://ketiDbUser:jDxz7RLAP5h6elQX@cluster0.byt7s.mongodb.net";
 const mongoClient = new MongoClient(url, {
     useNewUrlParser: true,
     poolSize: 2,
