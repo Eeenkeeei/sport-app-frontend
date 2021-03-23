@@ -35,7 +35,7 @@ export const LoginComponent = (props: LoginComponent) => {
     const classes = useStyles();
     const dispatch = useDispatch()
 
-    const [selectedAction, setSelectedAction] = useState<"reg" | "login" | null>(null);
+    const [selectedAction, setSelectedAction] = useState<"reg" | "login" | null>("login");
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
@@ -52,24 +52,23 @@ export const LoginComponent = (props: LoginComponent) => {
     return (
         <div className={classes.root}>
 
-            {selectedAction === null ?
+            {selectedAction === "login" ?
                 <>
-                    <Typography className={classes.header}>У вас уже есть аккаунт?</Typography>
-                    <Button variant="outlined" onClick={() => {
-                        setSelectedAction("login")
-                        setLogin("");
-                        setPassword("");
+                    <Typography className={classes.header}>Войти в приложение</Typography>
+                    <TextField value={login} onChange={(e) => setLogin(e.target.value)} className={classes.input}
+                               variant="outlined" margin="dense" label="Login"/>
+                    <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={classes.input}
+                               variant="outlined" margin="dense" label="Password"/>
+                    <Button style={{width: 300, marginTop: 15}} variant="contained" color="primary" onClick={() => {
+                        handleLogin()
                     }}>
                         Войти
                     </Button>
-                    <Typography>Еще нет аккаунта?</Typography>
-                    <Button variant="outlined" onClick={() => {
+                    <Typography style={{marginTop: 15}}>Еще нет аккаунта? <strong onClick={() => {
                         setSelectedAction("reg");
-                        setLogin("");
                         setPassword("");
-                    }}>
-                        Зарегистрироваться
-                    </Button>
+                        setLogin("");
+                    }} style={{color: "blue", cursor: "pointer"}}>Зарегистрироваться</strong></Typography>
                 </> : null
             }
             {selectedAction === "reg" ?
@@ -80,31 +79,18 @@ export const LoginComponent = (props: LoginComponent) => {
                     <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={classes.input}
                                variant="outlined" margin="dense" label="Password"/>
                     <div className={classes.buttonsContainer}>
-                        <Button onClick={handleRegistration} variant="outlined">
+                        <Button style={{width: 300, marginTop: 15}} variant="contained" color="primary" onClick={handleRegistration}>
                             Зарегистрироваться
                         </Button>
                     </div>
+                    <Typography style={{marginTop: 15}}><strong onClick={() => {
+                        setSelectedAction("login");
+                        setPassword("");
+                        setLogin("");
+                    }} style={{color: "blue", cursor: "pointer"}}>Вернуться к авторизации</strong></Typography>
                 </>
                 : null
             }
-
-            {selectedAction === "login" ?
-                <>
-                    <Typography className={classes.header}>Вход</Typography>
-                    <TextField value={login} onChange={(e) => setLogin(e.target.value)} className={classes.input}
-                               variant="outlined" margin="dense" label="Login"/>
-                    <TextField value={password} onChange={(e) => setPassword(e.target.value)} className={classes.input}
-                               variant="outlined" margin="dense" label="Password"/>
-                    <div className={classes.buttonsContainer}>
-                        <Button onClick={handleLogin} variant="outlined">
-                            Войти
-                        </Button>
-                    </div>
-                </>
-                : null
-            }
-
-
         </div>
     )
 }
